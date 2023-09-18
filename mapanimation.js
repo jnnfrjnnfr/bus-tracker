@@ -1,4 +1,4 @@
-// all bus stops between MIT and Harvard
+// bus stops between MIT and Harvard
 const busStops = [
   [-71.093729, 42.359244],
   [-71.094915, 42.360175],
@@ -14,27 +14,24 @@ const busStops = [
   [-71.118625, 42.374863],
 ];
 
-// add your own API key here
-mapboxgl.accessToken = " ";
+// ADD: access token
+mapboxgl.accessToken = ' ';
 
 // map object
 let map = new mapboxgl.Map({
-  container: "map",
-  style: "mapbox://styles/mapbox/streets-v11",
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v11',
   center: [-71.104081, 42.365554],
   zoom: 14,
 });
 
 // map marker
-let marker = new mapboxgl.Marker()
-  .setLngLat([-71.092761, 42.357575])
-  .addTo(map);
+let marker = new mapboxgl.Marker().setLngLat([-71.092761, 42.357575]).addTo(map);
 
-// index of the current bus stop
+// counter is the index of the current bus stop
 let counter = 0;
 function move() {
-  // update the marker coordinates, counter acccess to busStops array
-
+  // Update the marker coordinates
   setTimeout(() => {
     if (counter >= busStops.length) return;
     marker.setLngLat(busStops[counter]);
